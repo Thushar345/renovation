@@ -22,7 +22,13 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/waitlist', waitlistRoutes);  // Add waitlist routes
+app.use('/api/waitlist', waitlistRoutes); 
+
+
+// Wake-Up Route
+app.get('/api/wake', (req, res) => {
+  res.status(200).send({ message: 'Server is up and running!' });
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
